@@ -16,24 +16,28 @@ export default function Meme() {
   //   setIsGoingOut((prevState) => !prevState);
   // }
 
-  const [thingsArray,setThingsArray] =useState(['Thing 1', 'Thing 2'])
 
 
-function addItem(){
-  setThingsArray((prevState)=>{
-    return [...prevState, `Thing ${prevState.length+1}`]
+  const [contact,setContact]= useState({
+    firstName:'Lokesh',
+    lastName:'Khati',
+    phone : '7466065001',
+    email : 'lokeshkhati005@gmailcom',
+    isFavorite: false
+   })
 
-  })
-}
+   let feeling = contact.isFavorite? 'Love': 'Hate'
 
+   function toggleFavorite(){
 
-  const thingsElement= thingsArray.map((thing)=>{
-    return <p>{thing} </p>
-  })
+   setContact((prevContact)=>{
+     return {
+       ...prevContact,
+       isFavorite: !prevContact.isFavorite
+     }
+   })
+   }
 
-  
-
-  
   return (
     <main>
       {/* <div className="form">
@@ -44,36 +48,19 @@ function addItem(){
         </button>
       </div>
       <img src={memeImage} className="meme-image"/> */}
-      {/* <h1 style = {{color:'red'}}>Is State Important to know?</h1>
-      <div  style = {{height:"80px",width:"80px",backgroundColor:"black", borderRadius:"50%",display:'inline-block', marginLeft:"130px"}} onClick={handleClick}>
-        <h2  style = {{textAlign:"center",color:'white' }}>{result}</h2>
-      </div> */}
+      
+     
 
-      {/* <div className="rounded" onClick={handleClick}>
-        <h1>{isGoingOut? "Yes": 'No'} </h1>
-      </div> */}
-
-      {/* <div>
-        <button onClick={addItem} >Add Item</button>
-        {thingsElement}
-      </div> */}
-
-<article className="card">
-                <img src="./images/user.png" className="card--image" />
-                <div className="card--info">
-                    <img 
-                        src={`../images/star-empty.png`} 
-                        className="card--favorite"
-                        onClick={toggleFavorite}
-                    />
-                    <h2 className="card--name">
-                        John Doe
-                    </h2>
-                    <p className="card--contact">+1 (719) 555-1212</p>
-                    <p className="card--contact">itsmyrealname@example.com</p>
-                </div>
-                
-            </article>
+      <article className="card">
+        <h1>This is an image</h1>
+        <div className="card--info">
+          <h3 onClick={toggleFavorite} >{feeling}</h3>
+        
+          <h2 className="card--name">{contact.firstName} {contact.lastName}</h2>
+          <p className="card--contact">{contact.phone} </p>
+          <p className="card--contact">{contact.email} </p>
+        </div>
+      </article>
     </main>
   );
 }
