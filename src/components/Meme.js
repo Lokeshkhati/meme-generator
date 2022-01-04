@@ -16,11 +16,24 @@ export default function Meme() {
   //   setIsGoingOut((prevState) => !prevState);
   // }
 
-  const thingsArray = ['Things 1', 'Things 2']
+  const [thingsArray,setThingsArray] =useState(['Thing 1', 'Thing 2'])
 
- const thingsElement =thingsArray.map((thing)=>{
-   <p>{thing}</p>
- })
+
+function addItem(){
+  setThingsArray((prevState)=>{
+    return [...prevState, `Thing ${prevState.length+1}`]
+
+  })
+}
+
+
+  const thingsElement= thingsArray.map((thing)=>{
+    return <p>{thing} </p>
+  })
+
+  
+
+  
   return (
     <main>
       {/* <div className="form">
@@ -40,10 +53,27 @@ export default function Meme() {
         <h1>{isGoingOut? "Yes": 'No'} </h1>
       </div> */}
 
-      <div>
-        <button onClick={addItem}>Add Item</button>
+      {/* <div>
+        <button onClick={addItem} >Add Item</button>
         {thingsElement}
-      </div>
+      </div> */}
+
+<article className="card">
+                <img src="./images/user.png" className="card--image" />
+                <div className="card--info">
+                    <img 
+                        src={`../images/star-empty.png`} 
+                        className="card--favorite"
+                        onClick={toggleFavorite}
+                    />
+                    <h2 className="card--name">
+                        John Doe
+                    </h2>
+                    <p className="card--contact">+1 (719) 555-1212</p>
+                    <p className="card--contact">itsmyrealname@example.com</p>
+                </div>
+                
+            </article>
     </main>
   );
 }
