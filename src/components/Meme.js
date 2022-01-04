@@ -9,15 +9,18 @@ export default function Meme() {
   //   const randomNumber = Math.floor(Math.random() * memesArray.length);
   //   setMemeImage(memesArray[randomNumber].url);
   // };
-  const [counter, setCounter] = useState("0");
 
-  function handleDecrement() {
-    setCounter(counter-1);
-  }
-  function handleIncrement() {
-    setCounter(counter+1);
-  }
+  // const [isGoingOut, setIsGoingOut] = useState(false                                          );
 
+  // function handleClick() {
+  //   setIsGoingOut((prevState) => !prevState);
+  // }
+
+  const thingsArray = ['Things 1', 'Things 2']
+
+ const thingsElement =thingsArray.map((thing)=>{
+   <p>{thing}</p>
+ })
   return (
     <main>
       {/* <div className="form">
@@ -33,16 +36,13 @@ export default function Meme() {
         <h2  style = {{textAlign:"center",color:'white' }}>{result}</h2>
       </div> */}
 
-      <div className="counter">
-        <button className="counter--minus" onClick={handleDecrement}>
-          –
-        </button>
-        <div className="counter--count">
-          <h1>{counter} </h1>
-        </div>
-        <button className="counter--plus" onClick={handleIncrement}>
-          +
-        </button>
+      {/* <div className="rounded" onClick={handleClick}>
+        <h1>{isGoingOut? "Yes": 'No'} </h1>
+      </div> */}
+
+      <div>
+        <button onClick={addItem}>Add Item</button>
+        {thingsElement}
       </div>
     </main>
   );
